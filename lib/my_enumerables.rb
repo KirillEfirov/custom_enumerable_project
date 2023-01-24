@@ -1,4 +1,13 @@
 module Enumerable
+  def my_each
+    if block_given?
+      #self.each do |i|
+      for i in self do
+        yield(i)
+      end
+    end
+    self
+  end
   # Your code goes here
   def my_each_with_index
     ind = 0
@@ -20,6 +29,21 @@ module Enumerable
     end
     
     return arr
+  end
+
+  def my_all?   
+    if block_given?
+      truth = 0
+      self.my_each { |value| truth += 1 if yield(value) }
+
+      truth == self.length ? true : false
+    else
+      arr = Array.new
+
+      self.my_each { |value| arr.push(true) if value}
+
+      (arr.length == self.length || self.length == 0) ? true : false
+    end
   end
 
 end
