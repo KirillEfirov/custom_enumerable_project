@@ -10,11 +10,12 @@ class Array
   # Define my_each here
   def my_each
     if block_given?
-      i = 0
-      until i == self.length do
-        yield(self[i])
+      #self.each do |i|
+      for i in self do
+        yield(i)
       end
     end
     self
   end
+
 end
