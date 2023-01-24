@@ -46,6 +46,21 @@ module Enumerable
     end
   end
 
+  def my_any?   
+    if block_given?
+      truth = 0
+      self.my_each { |value| truth += 1 if yield(value) }
+
+      truth >= 1 ? true : false
+    else
+      arr = Array.new
+
+      self.my_each { |value| arr.push(true) if value}
+
+      (arr.length >= 1) ? true : false
+    end
+  end
+
 end
 
 # You will first have to define my_each
