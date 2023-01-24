@@ -10,6 +10,18 @@ module Enumerable
     end
     self
   end
+
+  def my_select
+    self if not block_given?
+  
+    arr = Array.new
+    for i in self do
+      arr << i if yield(i)
+    end
+    
+    return arr
+  end
+
 end
 
 # You will first have to define my_each
