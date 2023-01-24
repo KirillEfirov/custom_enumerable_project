@@ -61,6 +61,21 @@ module Enumerable
     end
   end
 
+  def my_none?   
+    if block_given?
+      lie = 0
+      self.my_each { |value| lie += 1 unless yield(value) }
+
+      lie == self.length ? true : false
+    else
+      arr = Array.new
+
+      self.my_each { |value| arr.push(false) unless value}
+
+      (arr.length == self.length || self.length == 0) ? true : false
+    end
+  end
+
 end
 
 # You will first have to define my_each
