@@ -90,6 +90,16 @@ module Enumerable
     end
 
   end
+
+  def my_map
+    return Enumerable unless block_given?
+
+    arr = Array.new
+
+    self.my_each { |value| arr << yield(value) }
+
+    return arr
+  end 
 end
 
 # You will first have to define my_each
