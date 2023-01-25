@@ -90,7 +90,6 @@ module Enumerable
     end
 
   end
-
 end
 
 # You will first have to define my_each
