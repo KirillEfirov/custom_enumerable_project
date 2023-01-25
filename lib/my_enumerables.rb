@@ -76,6 +76,21 @@ module Enumerable
     end
   end
 
+  def my_count(param = "optional")
+    counter = 0
+    if block_given?
+      self.my_each { |value| counter += 1 if yield(value) }
+
+      return counter
+    else
+        return self.length if param == "optional"
+
+        arr = self.my_select { |value| value == param }
+        return arr.length
+    end
+
+  end
+
 end
 
 # You will first have to define my_each
