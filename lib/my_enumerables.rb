@@ -99,7 +99,18 @@ module Enumerable
     self.my_each { |value| arr << yield(value) }
 
     return arr
-  end 
+  end
+  
+  def my_inject(initial_value = 0)
+    if block_given?
+      prod = initial_value
+      self.my_each_with_index do |value, ind|
+          iteration = yield(prod, value)
+          prod = iteration
+      end
+      return prod
+    end
+  end
 end
 
 # You will first have to define my_each
